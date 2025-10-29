@@ -1,0 +1,63 @@
+<h2 class="mt-3">Timesheet Entries</h2>
+<table class="table mt-3">
+    <thead class="sticky-top table-dark">
+    <tr>
+        <th>Day</th>
+        <th>Start - End</th>
+        <th>Total</th>
+        <th>Ticket</th>
+        <th>State</th>
+        <th>Description</th>
+        <th>Project</th>
+        <th>Uploaded</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% let previousDay = null; %>
+    <% timesheetData.forEach((entry, index)=> { %>
+        <% let isNewDay = previousDay !== entry.day; %>
+        <tr
+        class="
+            <%= entry.state === 'Vacation' ? 'table-secondary' : '' %>
+            <%= entry.state === 'Holiday' ? 'table-secondary' : '' %>
+            <%= entry.state === 'School' ? 'table-info' : '' %>
+            "
+        style="<%= isNewDay ? 'border-top: solid 2px black' : '' %>"
+        >
+        <td class="border-end">
+            <%= entry.day %>
+        </td>
+        <td>
+            <%= entry.start %> -
+            <%= entry.end %>
+        </td>
+        <td class="border-end">
+            <%= entry.total %>
+        </td>
+        <td>
+            <%= entry.ticket %>
+        </td>
+        <td>
+            <%= entry.state %>
+        </td>
+        <td style="width: 400px;">
+            <%= entry.description %>
+        </td>
+        <td class="border-end">
+            <%= entry.project %>
+        </td>
+        <td class="<%= entry.uploaded ? 'table-success' : '' %> border-end">
+            <%= entry.uploaded ? 'Yes' : 'No' %>
+        </td>
+        <td>
+            <!-- Ajouter des boutons Modifier et Supprimer -->
+            <a href="/duplicate-line/<%= selectedYear %>/<%= index %>" class="btn btn-primary btn-sm"><i class="bi bi-copy"></i></a>
+            <a href="/edit-line/<%= selectedYear %>/<%= index %>" class="btn btn-warning btn-sm"><i class="bi bi-pencil-fill"></i></a>
+            <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete('/delete-line/<%= selectedYear %>/<%= index %>')"><i class="bi bi-trash-fill"></i></a>
+        </td>
+        </tr>
+        <% previousDay = entry.day; %>
+    <% }) %>
+    </tbody>
+</table>

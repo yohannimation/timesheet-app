@@ -1,0 +1,56 @@
+<div class="collapse" id="addItem">
+    <div class="card card-body">
+        <form action="/add-line/<%= selectedYear %>" method="POST">
+        <div class="d-flex justify-content-between gap-3">
+            <div class="w-100">
+            <div class="mb-3">
+                <label for="day" class="form-label">Day</label>
+                <input type="date" class="form-control" id="day" name="day" required>
+            </div>
+            <div class="mb-3">
+                <label for="start" class="form-label">Start</label>
+                <input type="time" class="form-control" id="start" name="start" required>
+            </div>
+            <div class="mb-3">
+                <label for="end" class="form-label">End</label>
+                <input type="time" class="form-control" id="end" name="end" required>
+            </div>
+            </div>
+            <div class="w-100">
+            <div class="mb-3">
+                <label for="ticket" class="form-label">Ticket</label>
+                <input type="text" class="form-control" id="ticket" name="ticket">
+            </div>
+            <div class="mb-3">
+                <label for="state" class="form-label">State</label>
+                <select class="form-select" id="state" name="state" required>
+                <option value="Search">Search</option>
+                <option value="Development">Development</option>
+                <option value="Test">Test</option>
+                <option value="Deployment">Deployment</option>
+                <option value="Estimate">Estimate</option>
+                <option value="Vacation">Vacation</option>
+                <option value="School">School</option>
+                <option value="Holiday">Holiday</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="project" class="form-label">Project</label>
+                <input type="text" class="form-control" id="project" name="project">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+            </div>
+            <div>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="uploaded" name="uploaded">
+                <label class="form-check-label" for="uploaded">Uploaded</label>
+                </div>
+            </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Line</button>
+        </form>
+    </div>
+</div>

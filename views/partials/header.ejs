@@ -1,0 +1,18 @@
+<header class="mt-5 d-flex justify-content-between">
+    <h1>
+        Timesheet <span id="selected-year"><%= selectedYear %></span>
+    </h1>
+
+    <div class="d-flex gap-1 h-25">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#addItem" aria-expanded="false" aria-controls="addItem">
+            Add&nbsp;item
+        </button>
+
+        <!-- Sélection de l'année -->
+        <select id="year-select" class="form-select">
+            <% yearsAvailable.forEach(year => { %>
+                <option value="<%= year %>" <%= year==selectedYear ? 'selected' : '' %>><%= year %></option>
+            <% }) %>
+        </select>
+    </div>
+</header>
