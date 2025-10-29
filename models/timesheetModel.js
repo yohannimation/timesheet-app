@@ -18,6 +18,8 @@ function loadTimesheet(year) {
 }
 
 function saveTimesheet(year, data) {
+    data.sort((a, b) => new Date(b.day) - new Date(a.day));
+
     const filePath = path.join(dataDir, `${year}-timesheet.json`);
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
